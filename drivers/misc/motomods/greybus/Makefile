@@ -126,13 +126,6 @@ endif
 ifeq ($(CONFIG_MODS_USE_EXTCODEC_MI2S), y)
 CONFIG_OPTIONS_ENABLE += MODS_USE_EXTCODEC_MI2S
 endif
-
-$(foreach opt,$(CONFIG_OPTIONS_ENABLE),$(if $(CONFIG_$(opt)),, \
-     $(error CONFIG_$(opt) is disabled in the kernel configuration and must be enable \
-     to continue compilation)))
-$(foreach opt,$(CONFIG_OPTIONS_DISABLE),$(if $(filter m y, $(CONFIG_$(opt))), \
-     $(error CONFIG_$(opt) is enabled in the kernel configuration and must be disable \
-     to continue compilation),))
 endif
 
 # add -Wall to try to catch everything we can.
